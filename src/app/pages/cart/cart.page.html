@@ -1,0 +1,61 @@
+<ion-header no-border>
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start"> 
+      <ion-back-button></ion-back-button> 
+    </ion-buttons>
+    <ion-title>Cart</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div class="empty-cart" *ngIf="!emptycart">
+          <p>Your have an empty cart</p>
+          <ion-icon src="../../../assets/img/ios-cart.svg"></ion-icon>
+        </div>
+        <ion-button expand="block" *ngIf="!emptycart" (click)="popcart()">
+          KEEP SHOPPING
+        </ion-button>
+
+        <div class="card" *ngFor="let cartitem of cartitems">
+          <div class="card-content">
+            <img src="http://worktimer.kitchencarelimited.com/server/img/{{cartitem.img}}" alt="image">
+            <div class="card-info">
+              <p id="title">{{ cartitem.nam }}</p>
+              <p id="description">GHC {{ cartitem.prc }}</p>
+            </div>
+          </div>
+          <div id="hr"></div> 
+          <div class="card-footer">
+            <ion-button fill="clear" (click)="togglelike()">
+              <!-- <ion-icon class="dislike" slot="icon-only"  name="heart-empty" [hidden]="like"></ion-icon>
+              <ion-icon class="like" slot="icon-only"  name="heart" [hidden]="!like"></ion-icon> -->
+            </ion-button>
+            <ion-icon slot="icon-only" name="trash" (click)="removeitem(cartitem.rid)"></ion-icon>
+            <div class="qty-info">
+              <ion-icon name="remove-circle-outline" (click)="qtyfn(cartitem.rid,'decrease')"></ion-icon>
+              <span>{{ cartitem.count }}</span>
+              <!-- <ion-input type="number" [(ngModel)]="cartitem.count" (keyup)="onchange($event,cartitem.count)"></ion-input> -->
+              <ion-icon name="add-circle-outline" (click)="qtyfn(cartitem.rid,'increase')"></ion-icon>
+            </div>
+          </div>
+        </div>
+        <div class="order-action" *ngIf="emptycart">
+          <div class="total">
+            <p id="total">Total</p>
+            <p id="amount"> GHC {{ subtotal }}</p>
+          </div>
+          <ion-button expand="block" *ngIf="emptycart" (click)="gotocheckout()">
+            PROCEED TO CHECKOUT
+          </ion-button>
+          <ion-button fill="outline" expand="block" *ngIf="emptycart" >
+            CALL TO ORDER
+          </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

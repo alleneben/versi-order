@@ -1,5 +1,7 @@
 {
   "name": "versi-order",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

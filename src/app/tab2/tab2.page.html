@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      My Orders
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="mid-section" *ngIf="ord.length < 1">
+    You do not have any orders at the moment. Tap on home,
+    choose you preffered restaurant and make an order
+  </div>
+  <ion-grid>
+    <ion-row *ngIf="ord.length > 0">
+      <ion-col size="12" *ngFor="let item of ord" (click)="gotocheckout(item)">
+        <h1 class="name">{{ item[0].ord }}</h1>
+        <h1 class="name">{{ item[0].enm }}</h1>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

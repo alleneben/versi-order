@@ -1,0 +1,62 @@
+<ion-header no-border>
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start"> 
+      <ion-back-button></ion-back-button> 
+    </ion-buttons>
+    <ion-title>{{name}} Meals</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="gotocart()">
+        <ion-icon name="cart"></ion-icon>
+        <div class="countnumber" *ngIf="count">{{ count }}</div>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <div class="banner-slide">
+    <ion-slides pager="true" [options]="slideOpts">
+      <ion-slide>
+        <img class="img" src="../../assets/img/k.jpg" alt="image" />
+      </ion-slide>
+      <ion-slide>
+        <img src="../../assets/img/l.png" alt="image" />
+      </ion-slide>
+      <ion-slide>
+        <img src="../../assets/img/m.png" alt="image" />
+      </ion-slide>
+    </ion-slides>
+  </div> -->
+  <div class="mid-section">
+    <ion-searchbar placeholder="Search" [(ngModel)]="searchTerm" (ionChange)="onSearchInput($event)" ></ion-searchbar>
+    <ion-icon src="../../assets/img/apps-outline.svg" (click)="gotocategories()"></ion-icon>
+  </div>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" *ngFor="let item of searchitems" (click)="route(item.rid)">
+        <img src="http://worktimer.kitchencarelimited.com/server/img/{{item.img}}" alt="{{item.nam}}" />
+        <h1 class="name">{{ item.nam }}</h1>
+        <h1 class="price">GHC {{ item.prc }}</h1>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- <div class="categories">
+    top categories
+  </div> -->
+  <!-- <ion-grid>
+    <ion-row class="categories">
+      top categories
+    </ion-row>
+    <ion-row>
+      <ion-col size="3" *ngFor="let category of categories">
+        <img src="../../assets/img/tomatoes.jpg" alt="cabbage" />
+        <h1 class="category-name">{{category.nam}}</h1>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
+  <div class="recently-view-items">
+    
+  </div>
+    
+</ion-content>

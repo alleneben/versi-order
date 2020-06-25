@@ -1,0 +1,57 @@
+<ion-header no-border>
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start"> 
+      <ion-back-button></ion-back-button> 
+    </ion-buttons>
+    <ion-title>{{ item.nam }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="gotocart()">
+        <ion-icon name="cart"></ion-icon>
+        <div class="countnumber" *ngIf="count">{{ count }}</div>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="agent">
+        <!-- <p id="agent">Sold by <span>Roch Nation</span></p> -->
+        <!-- <p id="score">Seller Score: <span>60%</span></p> -->
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div class="divider"></div>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="item">
+        <ion-button fill="clear" (click)="togglelike()">
+          <ion-icon class="dislike" slot="icon-only" size="large" name="heart-outline" [hidden]="like"></ion-icon>
+          <ion-icon class="like" slot="icon-only" size="large" name="heart" [hidden]="!like"></ion-icon>
+        </ion-button>
+        <img src="http://worktimer.kitchencarelimited.com/server/img/{{item.img}}" alt="cabbage" />
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div class="divider"></div>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="item-detail">
+        <p id="item-name">{{ item.nam }}</p>
+        <p id="item-price">GHC {{ item.prc }}</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer class="item-footer">
+  <ion-button fill="outline" (click)="share()">
+    <ion-icon name="share"></ion-icon>
+  </ion-button>
+  <ion-button (click)="call()">
+    <ion-icon name="call"></ion-icon>
+  </ion-button>
+  <ion-button id="buynow" [disabled]="item.inCart" (click)="addtocart(item)">
+    {{item.inCart ? 'IN CART' : 'ADD TO CART'}}
+  </ion-button>
+</ion-footer>

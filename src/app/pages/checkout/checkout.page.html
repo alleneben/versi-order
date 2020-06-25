@@ -1,0 +1,228 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="closemodal()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Checkout</ion-title>
+    
+  </ion-toolbar>
+  <div class="checkout-steps">
+    <div class="checkout-step" (click)="backtodeliverytab()">DELIVERY</div>
+    <div class="{{checkout_step2_class}}">PAYMENT</div>
+    <div class="{{checkout_step3_class}}">SUMMARY</div>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div class="delivery" *ngIf="step_button_text === 'PROCEED TO PAYMENT'">
+    <p id="title">PERSONAL ADDRESS <span></span></p>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <p id="name">{{ud.namt}}</p>
+          <p id="address">{{ud.lmkt}}</p>
+          <p id="address">{{ud.telt}}</p>
+          <p id="address">{{ud.plct}}</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <p id="title">SETUP YOUR ADDRESS</p>
+    <ion-radio-group>
+      <div class="card" >
+        <div class="card-content">
+            <ion-input type="text" name="namt" [(ngModel)]="ud.namt" placeholder="Your name"></ion-input>
+            <ion-input type="text" name="telt" [(ngModel)]="ud.telt" placeholder="Reliable Phoneno"></ion-input>
+          <!-- <ion-item> -->
+            
+          <!-- </ion-item> -->
+          <!-- <ion-item> -->
+            <ion-textarea rows="2" cols="20" name="lmkt" [(ngModel)]="ud.lmkt" placeholder="Address"></ion-textarea>
+          <!-- </ion-item> -->
+        </div>
+        <div id="hr"></div> 
+        <div class="card-footer">
+          
+        </div>
+      </div>
+    </ion-radio-group>
+    <p id="title">DELIVERY METHOD</p>
+    <ion-radio-group value="deliverymode" (ionChange)="devmode($event)">
+      <div class="card" >
+        <div class="card-content-payment">
+          <ion-radio slot="start" value="1"></ion-radio>
+          <div>
+            <p>BY DELIVERY SERVICE</p>
+          </div>
+        </div>
+        <div id="hr"></div> 
+        <div class="card-footer">
+          
+        </div>
+      </div>
+      <div class="card" >
+        <div class="card-content-payment">
+          <ion-radio slot="start" value="2"></ion-radio>
+          <p>PICK UP</p>
+        </div>
+        <div id="hr"></div> 
+        <div class="card-footer">
+          
+        </div>
+      </div>
+    </ion-radio-group>
+    <div *ngIf="deliverymode === '1'">
+      <p id="title">LOCATION (TOWN)</p>
+      <div class="card" >
+        <div class="card-content">
+          <div>
+            <!-- <ion-label>Location</ion-label> -->
+            <ion-select placeholder="Choose" (ionChange)="onChange($event)">
+              <ion-select-option *ngFor="let location of locations" value="{{location.rid}}">{{location.nam}}</ion-select-option>
+            </ion-select>
+          </div>
+
+          <!-- <ion-item> -->
+            <ion-textarea rows="2" cols="20"  name="plct" [(ngModel)]="ud.plct" placeholder="Exact place of delivery"></ion-textarea>
+          <!-- </ion-item> -->
+        </div>
+        <div id="hr"></div> 
+        <div class="card-footer">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="payment" *ngIf="step_button_text === 'PROCEED TO SUMMARY'">
+    <p id="title">METHOD OF PAYMENT</p>
+    <ion-radio-group>
+      <div class="card" >
+        <div class="card-content-payment">
+          <ion-radio slot="start" value="griffy"></ion-radio>
+          <div>
+            <p>Mobile Money - Airtel Tigo, MTN</p>
+            <img src="../../../assets/img/payment-options.png" alt="Mobile Money" />
+          </div>
+        </div>
+        <div id="hr"></div> 
+        <div class="card-footer">
+          
+        </div>
+      </div>
+      <div class="card" >
+        <div class="card-content-payment">
+          <ion-radio slot="start" value="griff"></ion-radio>
+          <p>Cash On Delivery</p>
+        </div>
+        <div id="hr"></div> 
+        <div class="card-footer">
+          
+        </div>
+      </div>
+    </ion-radio-group>
+  </div>
+
+  <div class="summary" *ngIf="step_button_text === 'CONFIRM'">
+    <p id="title">TOTAL ORDER</p>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div class="total">
+            <p id="total">Subtotal</p>
+            <p id="amount"> GHC {{ subtotal }}</p>
+          </div>
+          <div class="total">
+            <p id="total">Shipping</p>
+            <p id="amount"> GHC {{ shipping }}</p>
+          </div>
+          <div class="hr"></div>
+          <div class="total">
+            <p id="total">Total</p>
+            <p id="amount"> GHC {{ subtotal }}</p>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <p id="title">PERSONAL ADDRESS</p>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <p id="name">{{ud.namt}}</p>
+          <p id="address">{{ud.lmkt}}</p>
+          <p id="address">{{ud.telt}}</p>
+          <p id="address">{{ud.plct}}</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <p id="title">METHOD OF DELIVERY</p>
+    <div class="card" >
+      <div class="card-content-payment">
+        <div>
+          <p>{{deliverymodename}}</p>
+        </div>
+      </div>
+      <div id="hr"></div> 
+      <div class="card-footer">
+        
+      </div>
+    </div>
+    
+    <p id="title">DELIVERY ADDRESS</p>
+    <div class="card" >
+      <div class="card-content-payment">
+        <div>
+          <p>{{ud.plct}}</p>
+        </div>
+      </div>
+      <div id="hr"></div> 
+      <div class="card-footer">
+        
+      </div>
+    </div>
+    
+    <p id="title">METHOD OF PAYMENT</p>
+    <div class="card" >
+      <div class="card-content-payment">
+        <div>
+          <p>Mobile Money - Airtel Tigo, MTN</p>
+          <img src="../../../assets/img/payment-options.png" alt="Mobile Money" />
+        </div>
+      </div>
+      <div id="hr"></div> 
+      <div class="card-footer">
+        
+      </div>
+    </div>
+  </div>
+
+  <ion-grid class="total-grid">
+    <ion-row>
+      <ion-col>
+        <div class="total">
+          <p id="total">Subtotal</p>
+          <p id="amount"> GHC {{ subtotal }}</p>
+        </div>
+        <div class="total">
+          <p id="total">Shipping</p>
+          <p id="amount"> GHC {{ shipping }}</p>
+        </div>
+        <div class="hr"></div>
+        <div class="total">
+          <p id="total">Total</p>
+          <p id="amount"> GHC {{ grandtotal }}</p>
+        </div>
+        <ion-button expand="block" (click)="next()" *ngIf="!finish">
+          {{ step_button_text }}
+        </ion-button>
+        <ion-button expand="block" (click)="confirm()" *ngIf="finish">
+            {{ step_button_text }}
+        </ion-button>
+        <!-- <p>you will be able to add a voucher in the next step</p> -->
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

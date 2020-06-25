@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Restaurant Paddie
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="gotocart()">
+        <ion-icon name="cart"></ion-icon>
+        <div class="countnumber" *ngIf="count">{{ count }}</div>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="banner-slide">
+    <ion-slides pager="true" [options]="slideOpts">
+      <!-- <ion-slide>
+        <img src="../../assets/img/k.jpg" alt="image" />
+      </ion-slide> -->
+      <ion-slide>
+        <img src="../../assets/img/l.png" alt="image" />
+      </ion-slide>
+      <ion-slide>
+        <img src="../../assets/img/m.png" alt="image" />
+      </ion-slide>
+    </ion-slides>
+  </div>
+  <div class="mid-section">
+    
+  </div>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" *ngFor="let item of items" >
+        <img src="../../assets/img/{{item.img}}" alt="image" (click)="route(item.rid,item.nam,item.ct2)"/>
+        <h1 class="name"><ion-icon name="home"></ion-icon> {{ item.nam }}</h1>
+        <h1 class="price"><ion-icon name="cash"></ion-icon> {{ item.ct1 }}</h1>
+        <h1 class="price"><ion-icon name="pin"></ion-icon> {{ item.loc }}</h1>
+        <h1 class="price" (click)="call(item.ct2)"><ion-icon name="call"></ion-icon> {{ item.ct2 }}</h1>
+      </ion-col>
+      <ion-col size="12" *ngIf="message">
+        <div class="network" >
+          <p>{{ message }}</p>
+        </div>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+  <!-- <div class="categories">
+    top categories
+  </div> -->
+  <!-- <ion-grid>
+    <ion-row class="categories">
+      top categories
+    </ion-row>
+    <ion-row>
+      <ion-col size="3" *ngFor="let category of categories">
+        <img src="../../assets/img/tomatoes.jpg" alt="cabbage" />
+        <h1 class="category-name">{{category.nam}}</h1>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div class="recently-view-items">
+    
+  </div>
+     -->
+</ion-content>

@@ -1,0 +1,88 @@
+ion-toolbar {
+    --color: #ffffff; 
+    --background: var(--custom-dark-main);
+    ion-button,
+    ion-back-button {
+      --color: #fff;
+    }
+    ion-title {
+      font-size: 0.9rem;
+      font-weight: 200;
+  }
+}
+
+ion-footer {
+  --ion-background-color: var(--custom-light-gray);
+  height: 60px;
+  padding: 10px;
+  margin-bottom: 10px;
+  
+  #buynow {
+    width: 50%;
+    font-weight: 400;
+  }
+}
+ion-content {
+    --ion-background-color: var(--custom-light-gray);
+
+    ion-grid {
+      --ion-grid-padding: 0;
+    }
+    ion-col {
+      background: var(--ion-color-primary-contrast);
+    }
+    p {
+      margin: 0;
+      padding-left: 0.8rem;
+
+      span {
+        font-weight: 600;
+      }
+    }
+    #agent {
+      font-size: 10px;
+      font-weight: 300;
+
+      span {
+        font-size: 12px;
+      }
+    }
+    #score {
+      font-size: 9px;
+      font-weight: 300;
+
+      span {
+        font-size: 10px;
+      }
+    }
+    .item {
+
+      img {
+        margin: 1.5rem auto;
+        border-radius: 3px;
+      }
+      .dislike {
+        color: var(--ion-color-medium-tint);
+      }
+      .like {
+        color: var(--ion-color-danger-shade);
+      }
+    }
+    .item-detail {
+      padding:0.5rem 0 1rem 0;
+
+      #item-name{
+        font-weight: 300;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+      }
+      #item-price {
+        font-weight: 600;
+        font-size: 1rem;
+      }
+    }
+    .divider {
+      height: 1px;
+    }
+}
+

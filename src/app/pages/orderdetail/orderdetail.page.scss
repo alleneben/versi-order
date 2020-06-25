@@ -1,0 +1,90 @@
+ion-header {
+    .checkout-steps {
+        display: flex;
+        padding: 15px;
+        justify-content: space-around;
+        color: var(--custom-pure-white);
+
+        .checkout-step, .cooking,.notpaid,.moved,.delivered,.paid,.canceled,.closed {
+            padding: 2px 15px;
+            border-radius: 60px;
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+        .checkout-step {
+            background: var(--custom-dark-main);
+        }
+        .cooking {
+            background: var(--ion-color-warning);
+        }
+        .moved {
+            background: #fc8181;
+        }
+        .delivered {
+            background: #76BA1B;
+        }
+        .paid {
+            background: #90cdf4;
+        }
+        .canceled {
+            background: var(--ion-color-danger-shade);
+        }
+        .closed {
+            background: #97266d;
+        }
+        .disable-checkout-step, .notpaid {
+            color: var(--custom-dark-gray);
+            padding: 2px 15px;
+            border-radius: 60px;
+            font-size: 12px;
+            font-weight: 800;
+        }
+    }
+    ion-title {
+        font-size: 0.9rem;
+        font-weight: 200;
+    }
+}
+ion-content {
+    --ion-background-color: var(--custom-light-gray);
+    ion-grid{
+        --ion-grid-padding: 0;
+    }
+    ion-col {
+        background: var(--custom-pure-white);
+        margin: 0;
+        font-size: 12px;
+        p {
+            margin: 5px;
+        }
+    }
+    p {
+        margin: 0;
+    }
+    .total {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 12px;
+        padding-bottom: 0.5rem;
+
+        #total {
+            font-weight: 400;
+            flex: 0.5;
+        }
+        #quatity {
+            flex: .25;
+        }
+        #amount {
+            font-weight: 700;
+            flex: .25;
+            color: var(--ion-color-danger-shade);
+        }
+    }
+
+
+    .total-grid{
+        margin-top: 40px;
+    }
+}

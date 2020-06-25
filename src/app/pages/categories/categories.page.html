@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="closemodal()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Categories</ion-title>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="delivery">
+    <p id="title"></p>
+    <ion-radio-group value="deliverymode" (ionChange)="changecategory($event)">
+      <div class="card">
+          <div class="card-content-payment">
+            <ion-radio slot="start" value="null"></ion-radio>
+            <div>
+              <p>All</p>
+            </div>
+          </div>
+          <div id="hr"></div> 
+          <div class="card-footer">
+            
+          </div>
+        </div>
+      <div class="card" *ngFor="let category of categories">
+        <div class="card-content-payment">
+          <ion-radio slot="start" value="{{category.rid}}"></ion-radio>
+          <div>
+            <p>{{category.nam}}</p>
+          </div>
+        </div>
+        <div id="hr"></div> 
+        <div class="card-footer">
+          
+        </div>
+      </div>
+    </ion-radio-group>
+  </div>  
+</ion-content>

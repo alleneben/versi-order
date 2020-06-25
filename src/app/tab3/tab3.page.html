@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Profile
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="delivery">
+    <p id="title" *ngIf="readonly" (click)="edit()">PERSONAL ADDRESS <span>{{btext}}</span></p>
+    <ion-grid *ngIf="readonly">
+      <ion-row>
+        <ion-col>
+          <p id="name">{{ud.namt}}</p>
+          <!-- <p id="address">{{ud.plct}}</p> -->
+          <p id="address">{{ud.lmkt}}</p>
+          <p id="address">{{ud.telt}}</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <p id="title" *ngIf="!readonly" (click)="edit()">PERSONAL ADDRESS <span>{{btext}}</span></p>
+    <ion-radio-group *ngIf="!readonly">
+      <div class="card" >
+        <div class="card-content">
+            <ion-input type="text" name="namt" [(ngModel)]="ud.namt" placeholder="Your name" [readonly]="readonly"></ion-input>
+            <ion-input type="text" name="telt" [(ngModel)]="ud.telt" placeholder="Reliable Phoneno" [readonly]="readonly"></ion-input>
+          <!-- <ion-item> -->
+            <!-- <ion-input type="text" name="plct" [(ngModel)]="ud.plct" placeholder="Exact place of delivery" [readonly]="readonly"></ion-input> -->
+          <!-- </ion-item> -->
+          <!-- <ion-item> -->
+            <ion-textarea rows="2" cols="20" name="lmkt" [(ngModel)]="ud.lmkt" placeholder="Address" [readonly]="readonly"></ion-textarea>
+          <!-- </ion-item> -->
+          <ion-button expand="block" (click)="save()" >Save</ion-button>
+        </div>
+        <div id="hr"></div> 
+        <div class="card-footer">
+          
+        </div>
+      </div>
+    </ion-radio-group>
+  </div>
+</ion-content>

@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="closemodal()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Order Details</ion-title>
+    
+  </ion-toolbar>
+  <div class="checkout-steps">
+    <div class="checkout-step">{{orderno}}</div>
+    
+    <div class="{{checkout_step3_class}}">{{status}}</div>
+  </div>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid class="total-grid">
+    <ion-row>
+      <ion-col>
+        <div class="total" *ngFor="let item of items">
+          <p id="total">{{item.tnm}}</p>
+          <p id="quantity">{{item.qty}}</p>
+          <p id="amount"> GHC {{ item.qty * item.prc }}</p>
+        </div>
+
+        <div class="hr"></div>
+        <div class="total">
+          <p id="total">Total</p>
+          <p id="amount"> GHC {{ subtotal }}</p>
+        </div>
+        <ion-button expand="block" (click)="checkorder()">
+          CHECK ORDER STATUS
+        </ion-button>
+        <ion-button expand="block" (click)="acceptdelivery()">
+          ACCEPT DELIVERY
+        </ion-button>
+        <!-- <p>you will be able to add a voucher in the next step</p> -->
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

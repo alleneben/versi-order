@@ -1,0 +1,17 @@
+<ion-content fullscreen="true">
+    <div class="login">
+      <img src="../../../assets/img/logo.jpg" alt="logo"/>
+    </div>
+    <div class="card">
+      <form [formGroup]="signinform">
+        <ion-input type="text" placeholder="Email" formControlName="emlt"></ion-input>
+        <ion-input type="password" placeholder="Password" formControlName="pwdt"></ion-input>        
+      </form>
+
+        <button expand="full" (click)="signin()" class="signin-button">
+          <!-- <ion-icon slot="start" src="../../../assets/icon/facebook.svg" id="fb"></ion-icon> -->
+          Sign In
+        </button>
+    </div>
+  
+  </ion-content>
