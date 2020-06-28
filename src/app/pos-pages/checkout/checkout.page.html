@@ -1,0 +1,27 @@
+<ion-content fullscreen="true">
+  <div class="top">
+    <div class="top-left">
+      <ion-menu-button></ion-menu-button>
+      Sales deck {{place}}
+    </div>
+    <div class="top-right">
+      <ion-icon name="person-add-outline"></ion-icon>
+    </div>
+  </div>
+  <div class="search">
+    <ion-input type="text" placeholder="Search">
+      <ion-icon name="search-outline"></ion-icon>    
+    </ion-input>
+    <ion-icon name="flash-outline"></ion-icon>
+  </div>
+  <div class="items">
+    <div class="item" (click)="goto()">
+      <ion-icon  name="add-outline"></ion-icon>     
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <button expand="full">{{no_of_item}} = {{total | currency:'GHC'}}</button>
+  </ion-toolbar>
+</ion-footer>

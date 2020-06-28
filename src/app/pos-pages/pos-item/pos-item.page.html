@@ -1,0 +1,43 @@
+<ion-header no-border>
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start"> 
+      <ion-back-button></ion-back-button> 
+    </ion-buttons>
+    <ion-title>New</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen="true">
+  <div class="pos-main">
+    <div class="item-image">
+      <div class="img-holder" (click)="getimage()" [style.backgroundImage]="renderimageonscreen()">
+        <!-- <ion-icon lazy="true" slot="start" name="image" *ngIf="!item.pict" ></ion-icon> -->
+        <img src="../../../assets/img/image_placeholder.png" *ngIf="!item.pict" alt="" srcset="">
+        <input
+        type="file"
+        #fileInput
+        style="visibility: hidden; height: 0px"
+        name="files[]"
+        (change)="processwebimage($event)"
+      />
+      </div>
+    </div>
+    <div class="item-props">
+      <ion-item>
+        <ion-label position="floating">Name</ion-label>
+        <ion-input name="namt" [(ngModel)]="item.namt"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Price</ion-label>
+        <ion-input name="prcn" [(ngModel)]="item.prcn"></ion-input>
+      </ion-item>            
+    </div>
+    <div class="item-extra">
+
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <button expand="full" (click)="save()">Create Item</button>
+  </ion-toolbar>
+</ion-footer>

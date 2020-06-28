@@ -1,0 +1,54 @@
+ion-content {
+    --ion-background-color: var(--custom-dark-main);
+    .menu-bg {
+        // background: var(--dark-blue);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 0 20px 0;
+        color: #ffffff;
+
+        img {
+            margin-bottom: 20px;
+        }
+        p {
+            margin: 0;
+        }
+        #profile-name {
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        #phone-number {
+            font-weight: 500;
+            font-size: 0.7rem;
+            margin-bottom: 20px;
+        }
+    }
+    .menu-items {
+        display: flex;
+        flex-direction: column;
+
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin: 15px 0 8px 8px;
+
+            p {
+                margin: 0;
+            }
+            ion-icon {
+               width: 20px;
+               height: 20px;
+               margin-right: 20px; 
+               color: var(--light-blue);
+            }
+        }
+    }
+}

@@ -28,19 +28,28 @@ export class SigninPage implements OnInit {
   }
   signin(){
     if(this.signinform.valid){
-      this.asv.signup(this.signinform.value,{s:'controller',a:'auth',m:'l',d:'security_login'}).subscribe( rd => {
+      this.usv.presentLoading() 
+      this.asv.signup(this.signinform.value,{s:'controller',a:'auth',m:'l',d:'security_login',c:'orders'}).subscribe( rd => {
+        this.usv.dismissloading()
         let out = rd;        
         if(out.success){
-          this.usv.displayToast(`<ion-icon name="close"></ion-icon> Login successful`,3000,true,'success','top')
-          this.router.navigate(['/tabs'])
+          // this.usv.displayToast(`<ion-icon name="close"></ion-icon> Login successful`,3000,true,'success','top')
+          this.router.navigate(['/checkout'])
         } else{
-          this.usv.displayToast(`<ion-icon name="close"></ion-icon> ${out[0].em}`,3000,true,'danger','top')
+          this.usv.displayToast(`${out[0].em}`,3000,true,'danger','top')
         }
-      },err=> this.usv.displayToast(err,2000,'','danger','top'))
+      },err=> {
+        this.usv.dismissloading()
+        this.usv.displayToast(err,2000,'','danger','top')
+      })
     } else{
-      this.usv.displayToast(`<ion-icon name="close"></ion-icon> All fields are required`,3000,true,'danger','top')
+      this.usv.displayToast(`All fields are required`,3000,true,'danger','top')
     }
     
+  }
+
+  register(){
+    this.router.navigate(['/signup'])
   }
 
 }

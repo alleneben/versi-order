@@ -47,4 +47,8 @@ export class SignupPage implements OnInit {
     
   }
 
+  signin(){
+    this.router.navigate(['/signin'])
+  }
+
 }

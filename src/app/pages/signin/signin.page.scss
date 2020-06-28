@@ -58,3 +58,13 @@ ion-content{
         color: var(--custom-dark-gray);
     }
 }
+.register {
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    font-weight: 400;
+    letter-spacing: 1px;
+    span {
+        font-weight: 600;
+    }
+}

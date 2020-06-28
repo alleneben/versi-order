@@ -4,18 +4,20 @@
   </div>
   <div class="card">
     <form [formGroup]="signupform">
-      <ion-input type="text" placeholder="Name of Enterprise" formControlName="nsht"></ion-input>
-      <ion-input type="text" placeholder="Location" formControlName="loct"></ion-input>
-      <ion-input type="text" placeholder="Primary Phoneno" formControlName="telt"></ion-input>
+      <ion-input type="text" placeholder="Your Full Name" formControlName="nsht"></ion-input>
+      <!-- <ion-input type="text" placeholder="Location" formControlName="loct"></ion-input> -->
+      <ion-input type="text" placeholder="Phoneno" formControlName="telt"></ion-input>
       <ion-input type="text" placeholder="Email" formControlName="emlt"></ion-input>
       <ion-input type="password" placeholder="Password" formControlName="pwdt"></ion-input>
       <ion-input type="password" placeholder="Confirm Password" formControlName="cwdt"></ion-input>
-      
     </form>
+    <button expand="full" (click)="signup()" class="signin-button">
+        <!-- <ion-icon slot="start" src="../../../assets/icon/facebook.svg" id="fb"></ion-icon> -->
+        Sign Up
+    </button>
   </div>
-  <button expand="full" (click)="signup()" class="signin-button">
-      <!-- <ion-icon slot="start" src="../../../assets/icon/facebook.svg" id="fb"></ion-icon> -->
-      Sign Up
-  </button>
-
+  
+  <div class="signin">
+    Already have account? <span (click)="signin()">Signin</span> 
+  </div>
 </ion-content>

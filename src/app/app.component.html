@@ -1,3 +1,83 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+    <ion-menu side="start" menuId="first" contentId="main">
+
+      <ion-content fullscreen="true">
+          <div  class="menu-left menu-bg">
+              <img src="../assets/icon/favicon.png" alt="profile">
+              <p id="profile-name">Yogesh Rajendhiran</p>
+              <p id="phone-number">+91 98765 43210</p>
+            </div>
+      
+            <div class="menu-items">
+              <div class="menu-item">
+                <ion-icon name="people-outline"></ion-icon>
+                <p>Customers</p>
+              </div>
+              <div class="menu-item" (click)="navigate('/checkout')">
+                <ion-icon name="receipt-outline"></ion-icon>
+                <p>Checkout</p>
+              </div>
+              <div class="menu-item">
+                <ion-icon name="server-outline"></ion-icon>
+                <p>Transactions</p>
+              </div>
+              <div class="menu-item">
+                <ion-icon name="pricetags-outline"></ion-icon>
+                <p>Products</p>
+              </div>
+              <div class="menu-item">
+                <ion-icon name="bar-chart-outline"></ion-icon>
+                <p>Analytics</p>
+              </div>
+              <div class="menu-item">
+                <ion-icon name="people-outline"></ion-icon>
+                <p>Users</p>
+              </div>
+              <div class="menu-item">
+                <ion-icon name="settings-outline"></ion-icon>
+                <p>Settings</p>
+              </div>
+              <div class="menu-item">
+                <ion-icon name="log-in"></ion-icon>
+                <p>Log Out</p>
+              </div>
+            </div>
+      </ion-content>
+    </ion-menu>
+      
+      <!-- <ion-menu side="start" menuId="custom" contentId="main" class="my-custom-menu">
+        <ion-header>
+          <ion-toolbar color="tertiary">
+            <ion-title>Custom Menu</ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content>
+          <ion-list>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+          </ion-list>
+        </ion-content>
+      </ion-menu> -->
+      
+      <ion-menu side="end" type="push" contentId="main">
+        <ion-header>
+          <ion-toolbar color="danger">
+            <ion-title>End Menu</ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content>
+          <ion-list>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+          </ion-list>
+        </ion-content>
+      </ion-menu>
+      
+      <ion-router-outlet id="main"></ion-router-outlet>
 </ion-app>

@@ -4,18 +4,23 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 
 const routes: Routes = [
-  // { path: '', redirectTo: 'signup', pathMatch: 'full' },
-  // { path: 'signup', loadChildren: './pages/signup/signup.module#SignupPageModule' },
+  { path: '', redirectTo: 'signin', pathMatch: 'full' },
+  { path: 'signin', loadChildren: './pages/signin/signin.module#SigninPageModule' },
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   { path: 'itemdetail', loadChildren: './pages/itemdetail/itemdetail.module#ItemdetailPageModule' },
-  { path: 'items', loadChildren: './pages/items/items.module#ItemsPageModule' },
+  { path: 'positem', loadChildren: './pos-pages/pos-item/pos-item.module#PosItemPageModule' },
   { path: 'cart', loadChildren: './pages/cart/cart.module#CartPageModule' },
-  { path: 'checkout', loadChildren: './pages/checkout/checkout.module#CheckoutPageModule' },
+  { path: 'checkout', loadChildren: './pos-pages/checkout/checkout.module#CheckoutPageModule' },
   { path: 'categories', loadChildren: './pages/categories/categories.module#CategoriesPageModule' },
-  { path: 'signin', loadChildren: './pages/signin/signin.module#SigninPageModule' }
+  { path: 'signup', loadChildren: './pages/signup/signup.module#SignupPageModule' },
+  {
+    path: 'pos-item',
+    loadChildren: () => import('./pos-pages/pos-item/pos-item.module').then( m => m.PosItemPageModule)
+  },
+  
 ];
 @NgModule({
   imports: [

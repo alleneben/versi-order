@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
+import { MenuController } from '@ionic/angular';
+
 
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { UtilAppService } from './util.app.service';
 import { UtilService } from './util.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +20,9 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private asv: UtilAppService,
-    private usv: UtilService
+    private usv: UtilService,
+    private menu: MenuController,
+    private router: Router
   ) {
     this.initializeApp();
   }
@@ -69,6 +74,24 @@ export class AppComponent {
 
   detectMob() {
     return window.innerWidth <= 800;
+  }
+
+  openFirst() {
+    this.menu.enable(true, 'first');
+    this.menu.open('first');
+  }
+
+  openEnd() {
+    this.menu.open('end');
+  }
+
+  openCustom() {
+    this.menu.enable(true, 'custom');
+    this.menu.open('custom');
+  }
+  navigate(path:any){
+    this.router.navigate([path])
+    this.menu.close('first');
   }
 
 }
