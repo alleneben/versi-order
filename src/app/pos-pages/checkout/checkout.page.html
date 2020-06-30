@@ -17,10 +17,11 @@
   <div class="items">
     <ion-grid>
       <ion-row>
-        <ion-col size="3" *ngFor="let item of items">
-          <ion-icon  name="add-outline"></ion-icon>
+        <ion-col size="3" *ngFor="let item of items" id="items">
+          <p>{{item.nam}}</p>
+          <p>{{item.prc}}</p>
         </ion-col>
-        <ion-col size="3" (click)="goto()">
+        <ion-col size="3" (click)="goto()" id="add-btn">
           <ion-icon  name="add-outline"></ion-icon>
         </ion-col>
       </ion-row>

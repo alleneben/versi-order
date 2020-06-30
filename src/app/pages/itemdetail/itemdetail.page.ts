@@ -53,8 +53,7 @@ export class ItemdetailPage implements OnInit {
   }
 
   addtocart(object:any){
-    if(!this.checkrestaurant(object,this.enm)) return  this.displayToast(`<ion-icon name="checkmark"></ion-icon> Your cart has meals from ${this.enm.enm}. You cannot order meals from ${object.enm} at the same time. Please you need to place the orders separately or remove all items from the cart and place a new order from ${object.enm}. Thank you.`,20000,true,'danger','top')
-    ;
+    if(!this.checkrestaurant(object,this.enm)) return  this.displayToast(`<ion-icon name="checkmark"></ion-icon> Your cart has meals from ${this.enm.enm}. You cannot order meals from ${object.enm} at the same time. Please you need to place the orders separately or remove all items from the cart and place a new order from ${object.enm}. Thank you.`,20000,true,'danger','top');
 
     let temproducts = this.items
       

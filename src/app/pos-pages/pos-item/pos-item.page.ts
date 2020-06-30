@@ -49,19 +49,21 @@ export class PosItemPage implements OnInit {
     if(this.item.namt == '' || this.item.prcn == '') return this.usv.displayToast('Name or Price fields cannot be blank',3000,true,'danger','top')
 
     this.item.emlt = await this.usv.getstoreddata('uid')
-
-    console.log(this.item);
     
     this.usv.presentLoading()
-    this.asv.save(this.item,{s:'controller',a:'save2',m:'l',d:'newitem_fn',c:'orders'})
+    this.asv.save(this.item,{s:'controller',a:'save2',m:'l',d:'new_mobile_item_add',c:'orders'})
     .subscribe(rd => {
+      this.usv.dismissloading()
       let out = rd;
-
       if(out.success){
-
+        this.item = {namt:'',prcn:'',cstn:'',imgt:''}
+        this.usv.displayToast('Item added successfully',3000,true,'success','top')
       } else {
-
+        this.usv.displayToast(out[0].em,3000,true,'danger','top')
       }
+    },err => {
+      this.usv.dismissloading()
+      this.usv.displayToast(err.name,3000,true,'danger','top')
     })
   }
 
