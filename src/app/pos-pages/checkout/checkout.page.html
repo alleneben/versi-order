@@ -15,9 +15,16 @@
     <ion-icon name="flash-outline"></ion-icon>
   </div>
   <div class="items">
-    <div class="item" (click)="goto()">
-      <ion-icon  name="add-outline"></ion-icon>     
-    </div>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="3" *ngFor="let item of items">
+          <ion-icon  name="add-outline"></ion-icon>
+        </ion-col>
+        <ion-col size="3" (click)="goto()">
+          <ion-icon  name="add-outline"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
 </ion-content>
 <ion-footer>

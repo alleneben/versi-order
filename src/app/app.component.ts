@@ -35,39 +35,39 @@ export class AppComponent {
       if(!this.detectMob()){
         this.usv.displayToast(`<ion-icon name="close"></ion-icon> This application is best viewed on a mobile phone. Preferably use Google Chrome Browser`,10000,true,'danger','top')
       }
-      this.asv.find({ridn:'',namt:'',etin:''},{s:'controller',a:'findmobile',m:'l',d:'items_all_fn',c:'orders'}).subscribe(rd => {
-        let out = rd;  
+      // this.asv.find({ridn:'',namt:'',etin:''},{s:'controller',a:'findmobile',m:'l',d:'items_all_fn',c:'orders'}).subscribe(rd => {
+      //   let out = rd;  
                   
-        if(out.success){
-          let item = {}
-          out.sd['itm'].map(rm => {
-            item = rm;
-            item['inCart'] = false;
-            item['count'] = 1;
-            item['total'] = 1
-            item['like'] = false    
+      //   if(out.success){
+      //     let item = {}
+      //     out.sd['itm'].map(rm => {
+      //       item = rm;
+      //       item['inCart'] = false;
+      //       item['count'] = 1;
+      //       item['total'] = 1
+      //       item['like'] = false    
             
-          })
+      //     })
           
-          localStorage.setItem('allitems',JSON.stringify(out.sd))          
-        } else {
-          this.usv.displayToast(`<ion-icon name="close"></ion-icon> ${out[0].em}`,3000,true,'danger','top')
-        }
+      //     localStorage.setItem('allitems',JSON.stringify(out.sd))          
+      //   } else {
+      //     this.usv.displayToast(`<ion-icon name="close"></ion-icon> ${out[0].em}`,3000,true,'danger','top')
+      //   }
         
-      },err=>{
-        if (localStorage.getItem('allitems') ) {
+      // },err=>{
+      //   if (localStorage.getItem('allitems') ) {
           
-        } else {
+      //   } else {
 
-          this.usv.displayToast(err.name,2000,'','danger','top')
-        }
-      })
+      //     this.usv.displayToast(err.name,2000,'','danger','top')
+      //   }
+      // })
 
-      if (JSON.parse(localStorage.getItem('cart'))) {
-        return;
-      } else {
-        localStorage.setItem('cart',JSON.stringify([]))
-      }
+      // if (JSON.parse(localStorage.getItem('cart'))) {
+      //   return;
+      // } else {
+      //   localStorage.setItem('cart',JSON.stringify([]))
+      // }
     });
   }
 

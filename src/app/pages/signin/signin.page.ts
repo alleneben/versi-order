@@ -33,8 +33,7 @@ export class SigninPage implements OnInit {
         this.usv.dismissloading()
         let out = rd;        
         if(out.success){
-          // this.usv.displayToast(`<ion-icon name="close"></ion-icon> Login successful`,3000,true,'success','top')
-          this.router.navigate(['/checkout'])
+          this.router.navigate(['/checkout',{uid:this.signinform.value.emlt}])
         } else{
           this.usv.displayToast(`${out[0].em}`,3000,true,'danger','top')
         }

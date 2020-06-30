@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
-
+import { IonicStorageModule } from '@ionic/storage';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -23,7 +23,19 @@ import { APP_CONFIG, BaseAppConfig } from "./util.app.config";
 @NgModule({
   declarations: [AppComponent,],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,CheckoutPageModule,CategoriesPageModule,OrderDetailPageModule,HttpClientModule,ReactiveFormsModule],
+  imports: [
+    BrowserModule, 
+    IonicModule.forRoot(), 
+    AppRoutingModule,
+    CheckoutPageModule,
+    CategoriesPageModule,
+    OrderDetailPageModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    IonicStorageModule.forRoot({
+      name: '__appdb',
+      driverOrder: ['indexeddb', 'sqlite', 'websql']})
+  ],
   providers: [
     UtilAppService,
     UtilService,

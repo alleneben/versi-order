@@ -10,11 +10,8 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
-  { path: 'itemdetail', loadChildren: './pages/itemdetail/itemdetail.module#ItemdetailPageModule' },
   { path: 'positem', loadChildren: './pos-pages/pos-item/pos-item.module#PosItemPageModule' },
-  { path: 'cart', loadChildren: './pages/cart/cart.module#CartPageModule' },
   { path: 'checkout', loadChildren: './pos-pages/checkout/checkout.module#CheckoutPageModule' },
-  { path: 'categories', loadChildren: './pages/categories/categories.module#CategoriesPageModule' },
   { path: 'signup', loadChildren: './pages/signup/signup.module#SignupPageModule' },
   {
     path: 'pos-item',

@@ -21,15 +21,19 @@
       />
       </div>
     </div>
-    <div class="item-props">
+    <div class="form-input">
       <ion-item>
         <ion-label position="floating">Name</ion-label>
         <ion-input name="namt" [(ngModel)]="item.namt"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Price</ion-label>
-        <ion-input name="prcn" [(ngModel)]="item.prcn"></ion-input>
-      </ion-item>            
+        <ion-input type="number" name="prcn" [(ngModel)]="item.prcn"></ion-input>
+      </ion-item> 
+      <ion-item>
+        <ion-label position="floating">Cost (Optional)</ion-label>
+        <ion-input name="cstn" [(ngModel)]="item.cstn"></ion-input>
+      </ion-item>           
     </div>
     <div class="item-extra">
 

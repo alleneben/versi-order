@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { ToastController,LoadingController } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilService {
   loading:boolean = false;
-  constructor(private toastctrl: ToastController,public loadingController: LoadingController) { }
+  constructor(private toastctrl: ToastController,public loadingController: LoadingController,private storage: Storage) { }
 
 
   async displayToast(msg:any,dur:any,anm:any,cls:any,pos:any) {
@@ -46,5 +48,14 @@ export class UtilService {
     this.loading = false;
     return await this.loadingController.dismiss().then(() => console.log('loading dismissed'));
 
+  }
+
+  setdata(key:any,data:any){
+    return this.storage.set(key, data);
+  }
+
+  getstoreddata(key:any){
+    
+    return this.storage.get(key);
   }
 }
