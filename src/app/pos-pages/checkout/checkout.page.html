@@ -2,7 +2,7 @@
   <div class="top">
     <div class="top-left">
       <ion-menu-button></ion-menu-button>
-      Sales deck {{place}}
+      Sales deck 
     </div>
     <div class="top-right">
       <ion-icon name="person-add-outline"></ion-icon>
@@ -19,7 +19,7 @@
       <ion-row>
         <ion-col size="3" *ngFor="let item of items" id="items">
           <p>{{item.nam}}</p>
-          <p>{{item.prc}}</p>
+          <p id="price">{{item.prc | currency:'GHC'}}</p>
         </ion-col>
         <ion-col size="3" (click)="goto()" id="add-btn">
           <ion-icon  name="add-outline"></ion-icon>

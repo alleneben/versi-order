@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+  email:any=''
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -35,6 +36,8 @@ export class AppComponent {
       if(!this.detectMob()){
         this.usv.displayToast(`<ion-icon name="close"></ion-icon> This application is best viewed on a mobile phone. Preferably use Google Chrome Browser`,10000,true,'danger','top')
       }
+      console.log('did we call you');
+      
       // this.asv.find({ridn:'',namt:'',etin:''},{s:'controller',a:'findmobile',m:'l',d:'items_all_fn',c:'orders'}).subscribe(rd => {
       //   let out = rd;  
                   
@@ -79,6 +82,9 @@ export class AppComponent {
   openFirst() {
     this.menu.enable(true, 'first');
     this.menu.open('first');
+
+    console.log('helloo');
+    
   }
 
   openEnd() {
