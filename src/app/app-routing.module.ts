@@ -13,11 +13,8 @@ const routes: Routes = [
   { path: 'positem', loadChildren: './pos-pages/pos-item/pos-item.module#PosItemPageModule' },
   { path: 'checkout', loadChildren: './pos-pages/checkout/checkout.module#CheckoutPageModule' },
   { path: 'signup', loadChildren: './pages/signup/signup.module#SignupPageModule' },
-  {
-    path: 'pos-item',
-    loadChildren: () => import('./pos-pages/pos-item/pos-item.module').then( m => m.PosItemPageModule)
-  },
-  
+  { path: 'cart', loadChildren: './pos-pages/cart/cart.module#CartPageModule'},
+  { path: 'payment', loadChildren: './pos-pages/payment/payment.module#PaymentPageModule'},
 ];
 @NgModule({
   imports: [

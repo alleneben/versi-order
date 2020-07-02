@@ -55,7 +55,15 @@ export class UtilService {
   }
 
   getstoreddata(key:any){
-    
     return this.storage.get(key);
+  }
+
+  calc(items:any){
+    let total = 0.00;
+    items.map(item => {
+      total += parseFloat(item.prc)
+    }) 
+
+    return total;
   }
 }

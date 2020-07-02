@@ -1,0 +1,35 @@
+<ion-header no-border>
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start"> 
+      <ion-back-button></ion-back-button> 
+    </ion-buttons>
+    <ion-title>{{no_of_items}} items</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of cartitems">  
+      <ion-item lines="full">
+        <ion-label class="ion-text-wrap">
+          <h3>{{item.count}} {{item.nam}}</h3>
+        </ion-label>
+        <ion-label><p>{{item.prc * item.count | currency:'GHC'}}</p></ion-label>
+        <ion-label class="add-minus">
+          <ion-icon name="add-outline" (click)="increase(item)"></ion-icon>
+          <ion-icon name="remove-outline" class="remove" (click)="decrease(item)"></ion-icon>
+        </ion-label>
+      </ion-item> 
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="delete(item)">
+          Delete
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <button expand="full" (click)="navigate('/payment')">{{no_of_items}} = {{total | currency:'GHC'}}</button>
+  </ion-toolbar>
+</ion-footer>

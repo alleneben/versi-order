@@ -36,7 +36,6 @@ export class AppComponent {
       if(!this.detectMob()){
         this.usv.displayToast(`<ion-icon name="close"></ion-icon> This application is best viewed on a mobile phone. Preferably use Google Chrome Browser`,10000,true,'danger','top')
       }
-      console.log('did we call you');
       
       // this.asv.find({ridn:'',namt:'',etin:''},{s:'controller',a:'findmobile',m:'l',d:'items_all_fn',c:'orders'}).subscribe(rd => {
       //   let out = rd;  

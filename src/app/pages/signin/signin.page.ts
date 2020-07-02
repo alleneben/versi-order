@@ -39,7 +39,7 @@ export class SigninPage implements OnInit {
         }
       },err=> {
         this.usv.dismissloading()
-        this.usv.displayToast(err,2000,'','danger','top')
+        this.usv.displayToast(err.name,2000,'','danger','top')
       })
     } else{
       this.usv.displayToast(`All fields are required`,3000,true,'danger','top')

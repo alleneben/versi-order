@@ -9,31 +9,25 @@ import { UtilService } from '../../util.service';
   styleUrls: ['./checkout.page.scss'],
 })
 export class CheckoutPage implements OnInit {
-  no_of_item:any = 'NO ITEM';
+  no_of_items:any = 'NO ITEM';
   total:any = 0.00;
-  items:any = []
+  items:any = [];
+  item:any
+  cartitems:Array<any> = [];
+  disabled:boolean = true;
+  
   constructor(private router: Router, private asv: UtilAppService, private usv: UtilService,private route: ActivatedRoute) { }
 
   ngOnInit() {
-    let uid = this.route.snapshot.paramMap.get('uid');
-    this.usv.setdata('uid',uid)
-    this.usv.presentLoading()
-    this.asv.find({ridn:'',namt:uid,etin:''},{s:'controller',a:'findmobile',m:'l',d:'items_all_fn',c:'orders'})
-    .subscribe(rd => {
-      this.usv.dismissloading()
-      let out =rd;      
-      if(out.success){
-        this.items = out.sd['itm']
-      } else {
-
-      }
-    }, err => {
-      this.usv.dismissloading()
-      this.usv.displayToast(err.name,3000,true,'danger','top')
-    })
+    this.init()
   }
 
   ionViewWillEnter(){
+    this.getcart()
+    this.init()
+  }
+
+  init(){
     let uid = this.route.snapshot.paramMap.get('uid');
     this.usv.setdata('uid',uid)
     this.usv.presentLoading()
@@ -42,9 +36,18 @@ export class CheckoutPage implements OnInit {
       this.usv.dismissloading()
       let out =rd;      
       if(out.success){
+        let item = {}        
+        out.sd['itm'].map(rm => {
+          item = rm;
+          item['inCart'] = false;
+          item['count'] = 1;
+          item['total'] = 1
+          item['like'] = false 
+        })
+
         this.items = out.sd['itm']
       } else {
-
+        this.usv.displayToast(out[0].em,3000,true,'danger','top')
       }
     }, err => {
       this.usv.dismissloading()
@@ -52,9 +55,41 @@ export class CheckoutPage implements OnInit {
     })
   }
 
-  goto(){
+  additem(object:any){
+    let temproducts = this.items
+      
+    const selecteditem = temproducts.find(item => item.rid === object.rid);
 
-    this.router.navigate(['/positem'])
+    let index = temproducts.indexOf(selecteditem)
+    let product = temproducts[index];
+    
+    
+    product.inCart=true
+    product.count = 1;
+    product.total = product.prs;
+    this.item = product;
+
+    if (this.cartitems === null) {
+      this.cartitems = []
+    }
+    this.cartitems.push(this.item)
+    this.usv.displayToast(`<ion-icon name="checkmark"></ion-icon> ${this.item.nam} has been added to cart`,3000,true,'success','top')
+    
+    this.no_of_items = this.cartitems.length;
+    this.disabled = this.no_of_items > 0 ? false : true; 
+    this.usv.setdata('cart',this.cartitems)
+    this.total = this.usv.calc(this.cartitems)  
+  }
+
+  async getcart(){
+    this.cartitems = await this.usv.getstoreddata('cart')
+
+    this.no_of_items = this.cartitems.length;
+    this.disabled = this.no_of_items > 0 ? false : true; 
+    this.total = this.usv.calc(this.cartitems)
+  }
+  navigate(path:any){    
+    this.router.navigate([path])
   } 
 
 

@@ -17,11 +17,11 @@
   <div class="items">
     <ion-grid>
       <ion-row>
-        <ion-col size="3" *ngFor="let item of items" id="items">
+        <ion-col size="3" *ngFor="let item of items" id="items" (click)="additem(item)">
           <p>{{item.nam}}</p>
           <p id="price">{{item.prc | currency:'GHC'}}</p>
         </ion-col>
-        <ion-col size="3" (click)="goto()" id="add-btn">
+        <ion-col size="3" (click)="navigate('/positem')" id="add-btn">
           <ion-icon  name="add-outline"></ion-icon>
         </ion-col>
       </ion-row>
@@ -30,6 +30,6 @@
 </ion-content>
 <ion-footer>
   <ion-toolbar>
-    <button expand="full">{{no_of_item}} = {{total | currency:'GHC'}}</button>
+    <button expand="full" (click)="navigate('/cart')" [disabled]="disabled">{{no_of_items}} = {{total | currency:'GHC'}}</button>
   </ion-toolbar>
 </ion-footer>
