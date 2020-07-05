@@ -55,7 +55,7 @@ export class CheckoutPage implements OnInit {
     })
   }
 
-  additem(object:any){
+  async additem(object:any){
     let temproducts = this.items
       
     const selecteditem = temproducts.find(item => item.rid === object.rid);
@@ -69,13 +69,21 @@ export class CheckoutPage implements OnInit {
     product.total = product.prs;
     this.item = product;
 
-    if (this.cartitems === null) {
-      this.cartitems = []
+    this.cartitems = await this.usv.getstoreddata('cart')    
+        
+    if(this.usv.containsObject(this.item,this.cartitems)){
+      let item  = this.cartitems.find(item => item.rid === this.item.rid);
+      item.count = item.count + 1   
+    } else {
+      this.cartitems.push(this.item)
     }
-    this.cartitems.push(this.item)
-    this.usv.displayToast(`<ion-icon name="checkmark"></ion-icon> ${this.item.nam} has been added to cart`,3000,true,'success','top')
+  
     
-    this.no_of_items = this.cartitems.length;
+    this.usv.displayToast(`${this.item.nam} has been added to cart <ion-icon name="checkmark"></ion-icon>`,3000,true,'success','top')
+    this.no_of_items = 0;
+    this.cartitems.map((item) => {
+      this.no_of_items = this.no_of_items + item.count
+    });
     this.disabled = this.no_of_items > 0 ? false : true; 
     this.usv.setdata('cart',this.cartitems)
     this.total = this.usv.calc(this.cartitems)  
@@ -83,14 +91,17 @@ export class CheckoutPage implements OnInit {
 
   async getcart(){
     this.cartitems = await this.usv.getstoreddata('cart')
+    this.no_of_items = 0;
+    this.cartitems.map((item) => {
+      this.no_of_items = this.no_of_items + item.count
+    });
 
-    this.no_of_items = this.cartitems.length;
+    this.no_of_items = this.cartitems.length === 0 ? 'NO ITEM' : this.no_of_items;
     this.disabled = this.no_of_items > 0 ? false : true; 
     this.total = this.usv.calc(this.cartitems)
   }
   navigate(path:any){    
     this.router.navigate([path])
-  } 
-
+  }
 
 }

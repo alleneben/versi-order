@@ -1,0 +1,5 @@
+<ion-item (click)="openInput()">
+  <!-- <ion-label position="floating">Received</ion-label> -->
+  {{ formattedAmount }}
+  <ion-input type="number" clearInput inputmode="numeric"  name="amtn" id="amtn" #amtn (keyup)="handleKeyUp($event)" (ionInput)="handleInput($event)" (ionBlur)="blur()"></ion-input>
+</ion-item>

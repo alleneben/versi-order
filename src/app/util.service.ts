@@ -57,13 +57,16 @@ export class UtilService {
   getstoreddata(key:any){
     return this.storage.get(key);
   }
-
+  
   calc(items:any){
     let total = 0.00;
     items.map(item => {
-      total += parseFloat(item.prc)
+      total = total + (parseFloat(item.prc) * parseInt(item.count))
     }) 
-
     return total;
+  }
+
+  containsObject(obj:any, list:any) {
+    return list.find(item => item.rid === obj.rid) ? true : false;
   }
 }

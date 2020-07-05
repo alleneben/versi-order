@@ -8,5 +8,35 @@
   </ion-header>
 
 <ion-content>
-
+  <form #form="ngForm">
+    <ion-list lines="none" class="ion-no-margin ion-no-padding">
+      <ion-item>
+        <ion-label position="stacked">Enter Amount</ion-label>
+        <app-number-input [precision]="precision" [amount]="''" (amountEntered)="amountChanged($event)" (focus)="focus($event)"></app-number-input> 
+      </ion-item>
+    </ion-list>
+    <div class="balance" *ngIf="show_bal">
+      <ion-text color="primary">Bal</ion-text>
+      <ion-text color="primary">{{ bal | currency:'GHC' }}</ion-text>
+    </div>
+    <div class="payment-options" *ngIf="show_options">
+      <div class="cash">
+        <ion-icon name="cash-outline"></ion-icon>
+        Cash
+      </div>
+      <div class="credit-card">
+        <ion-icon name="card-outline"></ion-icon>
+        Credit Card
+      </div>
+      <div class="checked">
+        <ion-icon name="create-outline"></ion-icon>
+        Cheque
+      </div>
+    </div>
+  </form>
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <button expand="full" [disabled]="!form.valid || !amount"> {{total | currency:'GHC'}}</button>
+  </ion-toolbar>
+</ion-footer>
